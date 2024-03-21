@@ -1,0 +1,9 @@
+services:
+  postgres:
+    image: postgres:14
+    ports:
+      - "5432:5432"
+    environment:
+      - POSTGRES_USER=legal-speech-user
+      - POSTGRES_PASSWORD=legal-speech-password
+      - POSTGRES_DB=legal-speech

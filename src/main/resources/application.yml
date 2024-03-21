@@ -1,0 +1,16 @@
+spring:
+  application:
+    name: legalsight-speech-app
+  datasource:
+    url: jdbc:postgresql://localhost:5432/legal-speech
+    username: legal-speech-user
+    password: legal-speech-password
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    databasePlatform: org.hibernate.dialect.PostgreSQLDialect
+    generate-ddl: true
+    hibernate:
+      ddl-auto: create-drop
+
+
+
