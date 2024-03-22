@@ -23,6 +23,7 @@ public class ObjectMapperConfig {
                 .serializationInclusion(JsonInclude.Include.NON_NULL)
                 .featuresToEnable(SerializationFeature.WRITE_ENUMS_USING_TO_STRING)
                 .featuresToDisable(SerializationFeature.FAIL_ON_EMPTY_BEANS)
+                .featuresToDisable(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS)
                 .build();
     }
 

@@ -11,5 +11,4 @@ import java.time.OffsetDateTime;
 public class ErrorDto {
     private String errorId;
     private String errorMessage;
-    private String errorCode;
 }
