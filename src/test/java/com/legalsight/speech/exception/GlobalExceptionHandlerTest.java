@@ -6,8 +6,11 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.junit.jupiter.MockitoExtension;
+import org.springframework.http.HttpMethod;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.servlet.resource.NoResourceFoundException;
+
 import static org.assertj.core.api.Assertions.assertThat;
 
 @ExtendWith(MockitoExtension.class)
@@ -36,5 +39,16 @@ public class GlobalExceptionHandlerTest {
         assertThat(errorDto).isNotNull();
         assertThat(errorDto.getErrorId()).isNotNull();
         assertThat(errorDto.getErrorMessage()).isEqualTo(noDataFoundException.getMessage());
+    }
+
+    @Test
+    void givenNoResourceException_whenHandleNoResourceFoundException_httpStatusShouldBeNotFound(){
+        NoResourceFoundException noResourceFoundException = new NoResourceFoundException(HttpMethod.GET,"/");
+        ResponseEntity<ErrorDto> errorDtoResponse = globalExceptionHandler.handleNoResourceFoundException(noResourceFoundException);
+        assertThat(errorDtoResponse.getStatusCode()).isEqualTo(HttpStatus.NOT_FOUND);
+        ErrorDto errorDto = errorDtoResponse.getBody();
+        assertThat(errorDto).isNotNull();
+        assertThat(errorDto.getErrorId()).isNotNull();
+        assertThat(errorDto.getErrorMessage()).isEqualTo("You are accessing an invalid url");
     }
 }

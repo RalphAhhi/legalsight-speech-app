@@ -6,7 +6,6 @@ import org.junit.jupiter.api.Test;
 import org.mapstruct.factory.Mappers;
 
 import java.time.Instant;
-import java.util.UUID;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -19,7 +18,7 @@ public class SpeechMapperTest {
         SpeechEntity entity = new SpeechEntity();
         entity.setContent("test-content");
         entity.setVersion(1);
-        entity.setId(UUID.randomUUID().toString());
+        entity.setId(1L);
         entity.setAuthor("test-author");
         entity.setCreatedDate(Instant.now());
         entity.setUpdatedDate(Instant.now());
@@ -34,7 +33,7 @@ public class SpeechMapperTest {
     void givenDto_whenMapToEntity_thenFieldsShouldBeProperlyMapToEntity(){
         SpeechDto dto = new SpeechDto();
         dto.setContent("test-content");
-        dto.setId(UUID.randomUUID().toString());
+        dto.setId(1L);
         dto.setAuthor("test-author");
         dto.setCreatedDate(Instant.now());
         dto.setUpdatedDate(Instant.now());

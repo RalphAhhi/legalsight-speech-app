@@ -2,6 +2,7 @@ package com.legalsight.speech.controller;
 
 import com.legalsight.speech.dto.ResultSetResponse;
 import com.legalsight.speech.dto.SpeechDto;
+import com.legalsight.speech.dto.SpeechFilterDto;
 import com.legalsight.speech.service.SpeechService;
 import lombok.AllArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -20,13 +21,13 @@ public class SpeechControllerImpl implements SpeechController {
     private final SpeechService speechService;
     @GetMapping("/{id}")
     @ResponseBody
-    public ResponseEntity<SpeechDto> findById(@PathVariable String id){
+    public ResponseEntity<SpeechDto> findById(@PathVariable Long id){
         return ResponseEntity.ok(speechService.findById(id));
     }
 
     @DeleteMapping("/{id}")
     @Override
-    public ResponseEntity<Void> deleteById(@PathVariable String id) {
+    public ResponseEntity<Void> deleteById(@PathVariable Long id) {
         speechService.deleteById(id);
         return ResponseEntity.ok().build() ;
     }
@@ -39,14 +40,19 @@ public class SpeechControllerImpl implements SpeechController {
 
     @PutMapping
     @Override
-    public ResponseEntity<SpeechDto> update(String id, SpeechDto speechDto) {
+    public ResponseEntity<SpeechDto> update(Long id, SpeechDto speechDto) {
         return ResponseEntity.ok(speechService.update(id,speechDto));
     }
 
     @GetMapping
     @Override
-    public ResponseEntity<ResultSetResponse<SpeechDto>> list() {
-        return ResponseEntity.ok(new ResultSetResponse<>(speechService.list()));
+    public ResponseEntity<ResultSetResponse<SpeechDto>> list(int perPage, int page, String sortBy, String sortOrder) {
+        SpeechFilterDto filterDto = new SpeechFilterDto();
+        filterDto.setPage(page);
+        filterDto.setPerPage(perPage);
+        filterDto.setSortBy(sortBy);
+        filterDto.setSortOrder(sortOrder);
+        return ResponseEntity.ok(new ResultSetResponse<>(speechService.list(filterDto)));
     }
 
 }

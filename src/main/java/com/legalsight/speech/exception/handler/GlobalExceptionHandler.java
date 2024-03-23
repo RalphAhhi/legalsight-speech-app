@@ -17,9 +17,8 @@ public class GlobalExceptionHandler {
 
     @ExceptionHandler(NoDataFoundException.class)
     public ResponseEntity<ErrorDto> handleNoRecordFoundException(NoDataFoundException nde) {
-        String errorId = UUID.randomUUID().toString();
-        logError(errorId, nde);
-        ErrorDto errorResponse = ErrorDto.builder().errorId(errorId)
+        logError(nde.getErrorId(), nde);
+        ErrorDto errorResponse = ErrorDto.builder().errorId(nde.getErrorId())
                 .errorMessage(nde.getMessage()).build();
         return new ResponseEntity<>(errorResponse, HttpStatus.NOT_FOUND);
     }

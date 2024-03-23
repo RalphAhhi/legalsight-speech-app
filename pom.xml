@@ -11,7 +11,7 @@
 	<groupId>com.legalsight</groupId>
 	<artifactId>legalsight-speech-app</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>Speech</name>
+	<name>legalsight-speech-app</name>
 	<description>Demo project for Spring Boot</description>
 
 	<properties>
