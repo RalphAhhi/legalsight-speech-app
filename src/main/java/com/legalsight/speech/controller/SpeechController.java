@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -23,23 +24,23 @@ import org.springframework.web.bind.annotation.RestController;
 @Validated
 public interface SpeechController {
     @GetMapping("/{id}")
-    @Operation(summary = "Find Speech by id API", description = "Find an existing Speech.", tags = "speech")
+    @Operation(summary = "Find Speech by id API", description = "Find an existing Speech.", tags = "Speech")
     ResponseEntity<SpeechDto> findById(@NotNull @PathVariable Long id);
 
     @DeleteMapping("/{id}")
-    @Operation(summary = "Delete Speech by id API", description = "Delete an existing Speech.", tags = "speech")
+    @Operation(summary = "Delete Speech by id API", description = "Delete an existing Speech.", tags = "Speech")
     ResponseEntity<Void> deleteById(@NotNull @PathVariable Long id);
 
     @PostMapping
-    @Operation(summary = "Create Speech API", description = "Creates a new speech record with the provided details.", tags = "speech")
-    ResponseEntity<SpeechDto> create(@Valid SpeechDto speechDto);
+    @Operation(summary = "Create Speech API", description = "Creates a new speech record with the provided details.", tags = "Speech")
+    ResponseEntity<SpeechDto> create(@Valid @RequestBody SpeechDto speechDto);
 
     @PutMapping("/{id}")
-    @Operation(summary = "Update Speech API", description = "Update an existing speech record by id with the provided details.", tags = "speech")
-    ResponseEntity<SpeechDto> update(@NotNull Long id, @Valid SpeechDto speechDto);
+    @Operation(summary = "Update Speech API", description = "Update an existing speech record by id with the provided details.", tags = "Speech")
+    ResponseEntity<SpeechDto> update(@NotNull Long id, @RequestBody @Valid SpeechDto speechDto);
 
     @GetMapping
-    @Operation(summary = "List Speech API with filter", description = "List All Speech base on criteria. Default will list all.", tags = "speech")
+    @Operation(summary = "List Speech API with filter", description = "List All Speech base on criteria. Default will list all.", tags = "Speech")
     ResponseEntity<ResultSetResponse<SpeechDto>> list(@RequestParam(value = "per_page", defaultValue = "10") @Min(1) @Max(100) final int perPage,
                                                       @RequestParam(value = "page", defaultValue = "1") @Min(1) @Max(Integer.MAX_VALUE) final int page,
                                                       @RequestParam(value = "sortBy", defaultValue = "createdDate") final String sortBy,

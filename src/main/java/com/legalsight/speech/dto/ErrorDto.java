@@ -1,14 +1,11 @@
 package com.legalsight.speech.dto;
 
-import lombok.Builder;
-import lombok.Data;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 
-import java.time.OffsetDateTime;
-
-@Builder
 @Getter
+@AllArgsConstructor
 public class ErrorDto {
-    private String errorId;
-    private String errorMessage;
+    private final String errorId;
+    private final String errorMessage;
 }
