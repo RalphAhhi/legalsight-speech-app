@@ -16,4 +16,4 @@ spring:
 
 legal-speech:
   initial-data:
-    enabled: true
+    enabled: false
