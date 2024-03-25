@@ -1,0 +1,18 @@
+version: '3.8'
+
+networks:
+  legal-speech-network:
+    name: legal-speech-network
+    driver: bridge
+
+services:
+  my-app:
+    build: .
+    image: legal-speech:latest
+    container_name: legal-speech
+    environment:
+      - DB_URL=legal-db
+    networks:
+      - legal-speech-network
+    ports:
+      - "8080:8080"

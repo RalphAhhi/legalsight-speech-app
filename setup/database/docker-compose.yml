@@ -1,8 +1,16 @@
+networks:
+  legal-speech-network:
+    name: legal-speech-network
+    driver: bridge
+
 services:
   postgres:
     image: postgres:14
+    container_name: legal-db
     ports:
       - "5432:5432"
+    networks:
+      - legal-speech-network
     environment:
       - POSTGRES_USER=legal-speech-user
       - POSTGRES_PASSWORD=legal-speech-password

@@ -1,5 +1,5 @@
 # Legal-Sight Speech API: 
-The Speech API provides endpoints for managing speeches.
+The Speech API provides endpoints for managing speech records. Speech records can be save,update,retrieve and delete
 ### Setting up local environment
 #### Prerequisite:
 * Docker
@@ -54,5 +54,12 @@ List Speech by filter
 -------------------------------------------------
     curl -X 'GET' \
     'http://localhost:8080/speech?author=John%20Doe&subjectArea=Politics&speechContentSnippet=Lorem&speechDateFrom=2024-03-25&speechDateTo=2024-03-26&perPage=10&page=1&sortBy=author&sortOrder=desc' \
+    -H 'accept: */*'
+-------------------------------------------------
+
+Delete Speech by Id
+-------------------------------------------------
+    curl -X 'DELETE' \
+    'http://localhost:8080/speech/1' \
     -H 'accept: */*'
 -------------------------------------------------
