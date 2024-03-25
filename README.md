@@ -5,10 +5,11 @@ The Speech API provides endpoints for managing speech records. Speech records ca
 * Docker
 * Maven
 
-Steps for database setup:
+Steps for local database setup:
+ * Should first execute the database setup
  * Navigate to project > setup > database on terminal
  * Execute "sh start-database.sh"
- * This will start your postrgre database in docker
+ * This will start your Postrgre database in docker
 
 Steps for running application locally:
  * Navigate to project root directory
