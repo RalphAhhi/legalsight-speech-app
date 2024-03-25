@@ -2,4 +2,4 @@ mvn clean install
 
 set -x
 
-docker compose up -d --force-recreate
+docker-compose up -d --force-recreate

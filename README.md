@@ -2,8 +2,9 @@
 The Speech API provides endpoints for managing speech records. Speech records can be save,update,retrieve and delete
 ### Setting up local environment
 #### Prerequisite:
-* Docker
+* Latest Docker
 * Maven
+* JDK 17
 
 Steps for local database setup:
  * Should first execute the database setup
