@@ -9,6 +9,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.time.LocalDate;
+
 @RestController
 @AllArgsConstructor
 public class SpeechControllerImpl implements SpeechController {
@@ -36,13 +38,19 @@ public class SpeechControllerImpl implements SpeechController {
     }
 
     @Override
-    public ResponseEntity<ResultSetResponse<SpeechDto>> list(int perPage, int page, String sortBy, String sortOrder) {
+    public ResponseEntity<ResultSetResponse<SpeechDto>> list(String author, String subjectArea, String speechContentSnippet, LocalDate speechDateFrom, LocalDate speechDateTo, int perPage, int page, String sortBy, String sortOrder) {
         SpeechFilterDto filterDto = new SpeechFilterDto();
+        filterDto.setAuthor(author);
+        filterDto.setContentSnippet(speechContentSnippet);
+        filterDto.setSubjectArea(subjectArea);
+        filterDto.setSpeechDateFrom(speechDateFrom);
+        filterDto.setSpeechDateTo(speechDateTo);
         filterDto.setPage(page);
         filterDto.setPerPage(perPage);
         filterDto.setSortBy(sortBy);
         filterDto.setSortOrder(sortOrder);
         return ResponseEntity.ok(new ResultSetResponse<>(speechService.list(filterDto)));
     }
+
 
 }

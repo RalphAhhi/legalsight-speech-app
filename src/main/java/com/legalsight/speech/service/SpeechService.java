@@ -6,6 +6,7 @@ import com.legalsight.speech.entity.SpeechEntity;
 import com.legalsight.speech.exception.NoDataFoundException;
 import com.legalsight.speech.mapper.BaseMapper;
 import com.legalsight.speech.repository.SpeechRepository;
+import com.legalsight.speech.specification.SpeechSpecification;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -40,7 +41,8 @@ public class SpeechService {
     }
 
     public List<SpeechDto> list(SpeechFilterDto filterDto) {
-        return speechMapper.toDto(speechRepository.findAll());
+        SpeechSpecification speechSpecification = new SpeechSpecification(filterDto);
+        return speechMapper.toDto(speechRepository.findAll(speechSpecification));
     }
 
     @Transactional

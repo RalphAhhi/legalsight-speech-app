@@ -19,6 +19,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.time.LocalDate;
+
 @RestController
 @RequestMapping("/speech")
 @Validated
@@ -41,9 +43,14 @@ public interface SpeechController {
 
     @GetMapping
     @Operation(summary = "List Speech API with filter", description = "List All Speech base on criteria. Default will list all.", tags = "Speech")
-    ResponseEntity<ResultSetResponse<SpeechDto>> list(@RequestParam(value = "per_page", defaultValue = "10") @Min(1) @Max(100) final int perPage,
+    ResponseEntity<ResultSetResponse<SpeechDto>> list(@RequestParam(value = "author",required = false)final String author,
+                                                      @RequestParam(value = "subjectArea",required = false)final String subjectArea,
+                                                      @RequestParam(value = "speechContentSnippet",required = false)final String speechContentSnippet,
+                                                      @RequestParam(value = "speechDateFrom",required = false)final LocalDate speechDateFrom,
+                                                      @RequestParam(value = "speechDateTo",required = false)final LocalDate speechDateTo,
+                                                      @RequestParam(value = "perPage", defaultValue = "10") @Min(1) @Max(100) final int perPage,
                                                       @RequestParam(value = "page", defaultValue = "1") @Min(1) @Max(Integer.MAX_VALUE) final int page,
-                                                      @RequestParam(value = "sortBy", defaultValue = "createdDate") final String sortBy,
+                                                      @RequestParam(value = "sortBy", defaultValue = "id") final String sortBy,
                                                       @RequestParam(value = "sortOrder", defaultValue = "asc") final String sortOrder);
 
 }
