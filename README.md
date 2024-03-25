@@ -5,19 +5,26 @@ The Speech API provides endpoints for managing speech records. Speech records ca
 * Docker
 * Maven
 
-Steps:
+Steps for database setup:
  * Navigate to project > setup > database on terminal
  * Execute "sh start-database.sh"
  * This will start your postrgre database in docker
+
+Steps for running application locally:
  * Navigate to project root directory
  * Execute "mvn spring-boot:run"
  * This will start the application and you can access the API endpoints.
 
+Steps for running application on docker
+ * Should first execute the database setup
+ * Navigate to project root directory
+ * Execute "sh start-docker.sh"
+
 Notes:
 To setup sample data on startup, set legal-speech.initial-data.enabled to true on application.yml
 
-### Documentation:
-Swagger is use api documentation. Access http://localhost:8080/swagger-ui/index.html after application is running
+### API Documentation:
+Swagger is used for api documentation. Access http://localhost:8080/swagger-ui/index.html after application is running
 
 
 # SAMPLES
