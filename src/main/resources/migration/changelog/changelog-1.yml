@@ -17,6 +17,9 @@ databaseChangeLog:
               - column:
                   name: version
                   type: INT
+                  constraints:
+                    nullable: false
+                  defaultValue: 1
               - column:
                   name: author
                   type: VARCHAR(70)
@@ -32,6 +35,8 @@ databaseChangeLog:
               - column:
                   name: created_date
                   type: TIMESTAMP
+                  defaultValueComputed: CURRENT_TIMESTAMP
               - column:
                   name: updated_date
                   type: TIMESTAMP
+                  defaultValueComputed: CURRENT_TIMESTAMP

@@ -13,3 +13,7 @@ spring:
       ddl-auto: none
   liquibase:
     change-log: classpath:/migration/master-changeLog.yml
+
+legal-speech:
+  initial-data:
+    enabled: true

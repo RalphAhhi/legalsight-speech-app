@@ -24,7 +24,7 @@ public abstract class BaseEntity {
     @Column(name = "created_date")
     @CreationTimestamp
     protected Instant createdDate;
-    @Column(name = "update_date")
+    @Column(name = "updated_date")
     @UpdateTimestamp
     protected Instant updatedDate;
 

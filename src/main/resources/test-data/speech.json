@@ -1,0 +1,116 @@
+[
+  {
+    "author": "John Doe",
+    "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+    "speechDate": "2024-03-25",
+    "subjectArea": "Politics"
+  },
+  {
+    "author": "Alice Smith",
+    "content": "Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+    "speechDate": "2024-03-25",
+    "subjectArea": "Science"
+  },
+  {
+    "author": "Bob Johnson",
+    "content": "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+    "speechDate": "2024-03-25",
+    "subjectArea": "Technology"
+  },
+  {
+    "author": "Emily Brown",
+    "content": "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.",
+    "speechDate": "2024-03-25",
+    "subjectArea": "Education"
+  },
+  {
+    "author": "Michael Wilson",
+    "content": "Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+    "speechDate": "2024-03-25",
+    "subjectArea": "Healthcare"
+  },
+  {
+    "author": "Sarah Jones",
+    "content": "Integer euismod lacus luctus magna. Mauris sollicitudin fermentum libero, eget tincidunt turpis scelerisque at.",
+    "speechDate": "2024-03-25",
+    "subjectArea": "Environment"
+  },
+  {
+    "author": "David Martinez",
+    "content": "Vivamus nec tortor ut mi hendrerit interdum vel in nisl.",
+    "speechDate": "2024-03-25",
+    "subjectArea": "Business"
+  },
+  {
+    "author": "Jessica Lee",
+    "content": "Fusce eu tellus enim. Cras semper quam eget justo fermentum consequat.",
+    "speechDate": "2024-03-25",
+    "subjectArea": "Arts"
+  },
+  {
+    "author": "Kevin Taylor",
+    "content": "Pellentesque quis quam ut magna vestibulum gravida.",
+    "speechDate": "2024-03-25",
+    "subjectArea": "Sports"
+  },
+  {
+    "author": "Amanda Wilson",
+    "content": "Nulla ut arcu nec tortor laoreet sollicitudin.",
+    "speechDate": "2024-03-25",
+    "subjectArea": "Entertainment"
+  },
+  {
+    "author": "Andrew Brown",
+    "content": "Curabitur luctus efficitur mauris, eu consectetur odio tempus a.",
+    "speechDate": "2024-03-25",
+    "subjectArea": "History"
+  },
+  {
+    "author": "Rachel Clark",
+    "content": "Suspendisse dapibus dignissim purus, id placerat magna hendrerit ac.",
+    "speechDate": "2024-03-25",
+    "subjectArea": "Religion"
+  },
+  {
+    "author": "Joshua Garcia",
+    "content": "Vestibulum suscipit tincidunt magna, et auctor felis vestibulum vel.",
+    "speechDate": "2024-03-25",
+    "subjectArea": "Philosophy"
+  },
+  {
+    "author": "Olivia Martinez",
+    "content": "Nam lacinia, nunc nec posuere tristique, mi nisi scelerisque arcu, vel tristique lacus leo ac nunc.",
+    "speechDate": "2024-03-25",
+    "subjectArea": "Psychology"
+  },
+  {
+    "author": "Daniel Smith",
+    "content": "Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.",
+    "speechDate": "2024-03-25",
+    "subjectArea": "Sociology"
+  },
+  {
+    "author": "Sophia Johnson",
+    "content": "Duis vel mauris nec arcu vestibulum vehicula.",
+    "speechDate": "2024-03-25",
+    "subjectArea": "Literature"
+  },
+  {
+    "author": "James Taylor",
+    "content": "Fusce quis aliquam felis, sed feugiat nisi.",
+    "speechDate": "2024-03-25",
+    "subjectArea": "Economics"
+  },
+  {
+    "author": "Isabella Lee",
+    "content": "Morbi ac interdum magna, in tincidunt enim.",
+    "speechDate": "2024-03-25",
+    "subjectArea": "Geography"
+  },
+  {
+    "author": "Logan Brown",
+    "content": "Proin non sapien magna. Integer facilisis elementum lacus.",
+    "speechDate": "2024-03-25",
+    "subjectArea": "Med"
+  }
+]
