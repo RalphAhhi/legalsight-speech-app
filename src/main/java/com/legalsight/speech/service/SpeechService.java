@@ -1,5 +1,6 @@
 package com.legalsight.speech.service;
 
+import com.legalsight.speech.dto.ResultSetResponse;
 import com.legalsight.speech.dto.SpeechDto;
 import com.legalsight.speech.dto.SpeechFilterDto;
 import com.legalsight.speech.entity.SpeechEntity;
@@ -7,11 +8,11 @@ import com.legalsight.speech.exception.NoDataFoundException;
 import com.legalsight.speech.mapper.BaseMapper;
 import com.legalsight.speech.repository.SpeechRepository;
 import com.legalsight.speech.specification.SpeechSpecification;
+import com.legalsight.speech.utils.PageRequestUtils;
 import lombok.AllArgsConstructor;
+import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-
-import java.util.List;
 
 @Transactional(readOnly = true)
 @AllArgsConstructor
@@ -40,9 +41,10 @@ public class SpeechService {
         return speechMapper.toDto(speechRepository.save(speechMapper.toEntity(speechDto)));
     }
 
-    public List<SpeechDto> list(SpeechFilterDto filterDto) {
+    public ResultSetResponse<SpeechDto> list(SpeechFilterDto filterDto) {
         SpeechSpecification speechSpecification = new SpeechSpecification(filterDto);
-        return speechMapper.toDto(speechRepository.findAll(speechSpecification));
+        Page<SpeechEntity> speechEntityPage = speechRepository.findAll(speechSpecification, PageRequestUtils.createPageRequest(filterDto.getPage(),filterDto.getPerPage(),filterDto.getSortBy(), filterDto.getSortOrder()));
+        return new ResultSetResponse<>(speechMapper.toDto(speechEntityPage.getContent()),filterDto.getPage(), filterDto.getPerPage(),speechEntityPage.getTotalElements());
     }
 
     @Transactional

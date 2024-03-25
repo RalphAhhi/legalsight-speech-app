@@ -2,9 +2,12 @@ package com.legalsight.speech.controller;
 
 
 import com.legalsight.speech.dto.SpeechDto;
+import com.legalsight.speech.dto.SpeechFilterDto;
 import com.legalsight.speech.service.SpeechService;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.ArgumentCaptor;
+import org.mockito.Captor;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
@@ -27,6 +30,8 @@ class SpeechControllerTest {
 
     @InjectMocks
     private SpeechControllerImpl controller;
+    @Captor
+    private ArgumentCaptor<SpeechFilterDto> speechFilterCaptor;
 
     @Test
     void givenSpeechDto_whenCreate_thenShouldTriggerServiceForCreateAndReturnResult() {
@@ -95,6 +100,35 @@ class SpeechControllerTest {
         controller.deleteById(speechId);
         //then:
         verify(speechService, times(1)).deleteById(speechId);
+    }
+
+    @Test
+    void givenFilters_whenList_thenShouldTriggerServiceListingWtihFilterObjectGenerated() {
+        //when:
+        String author = "test-author";
+        String subjectArea = "test-subject-area";
+        String contentSnippet = "test-speechContentSnippet";
+        LocalDate dateFrom = LocalDate.now();
+        LocalDate dateTo = LocalDate.now().plusDays(1L);
+        int perPage = 10;
+        int page = 1;
+        String sortBy="id";
+        String sortOrder="asc";
+        controller.list(author,subjectArea,contentSnippet ,dateFrom
+                ,dateTo ,perPage,page,sortBy,sortOrder);
+
+        //then:
+        verify(speechService, times(1)).list(speechFilterCaptor.capture());
+        SpeechFilterDto capturedFilter = speechFilterCaptor.getValue();
+        assertThat(capturedFilter.getSpeechDateFrom()).isEqualTo(dateFrom);
+        assertThat(capturedFilter.getSpeechDateTo()).isEqualTo(dateTo);
+        assertThat(capturedFilter.getAuthor()).isEqualTo(author);
+        assertThat(capturedFilter.getSubjectArea()).isEqualTo(subjectArea);
+        assertThat(capturedFilter.getContentSnippet()).isEqualTo(contentSnippet);
+        assertThat(capturedFilter.getPerPage()).isEqualTo(perPage);
+        assertThat(capturedFilter.getPage()).isEqualTo(page);
+        assertThat(capturedFilter.getSortBy()).isEqualTo(sortBy);
+        assertThat(capturedFilter.getSortOrder()).isEqualTo(sortOrder);
     }
 
 }

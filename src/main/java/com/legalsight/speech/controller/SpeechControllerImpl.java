@@ -49,7 +49,7 @@ public class SpeechControllerImpl implements SpeechController {
         filterDto.setPerPage(perPage);
         filterDto.setSortBy(sortBy);
         filterDto.setSortOrder(sortOrder);
-        return ResponseEntity.ok(new ResultSetResponse<>(speechService.list(filterDto)));
+        return ResponseEntity.ok(speechService.list(filterDto));
     }
 
 

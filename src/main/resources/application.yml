@@ -10,7 +10,6 @@ spring:
     databasePlatform: org.hibernate.dialect.PostgreSQLDialect
     generate-ddl: true
     hibernate:
-      ddl-auto: create-drop
-
-
-
+      ddl-auto: none
+  liquibase:
+    change-log: classpath:/migration/master-changeLog.yml
