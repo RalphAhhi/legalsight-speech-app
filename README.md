@@ -23,7 +23,8 @@ Steps for running application on docker
  * Execute "sh start-docker.sh"
 
 Notes:
-To setup sample data on startup, set legal-speech.initial-data.enabled to true on application.yml
+* To setup sample data on startup, set legal-speech.initial-data.enabled to true on application.yml
+* For windows, gitbash can be use to run sh files
 
 ### API Documentation:
 Swagger is used for api documentation. Access http://localhost:8080/swagger-ui/index.html after application is running
