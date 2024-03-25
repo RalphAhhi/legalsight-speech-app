@@ -84,7 +84,6 @@ class SpeechServiceTest {
                 .hasMessageContaining("Speech with id 1 not found");
     }
 
-
     @Test
     void givenValidDto_whenCreate_shouldMapToEntityAndTriggerRepositoryToSaveEntity(){
         //given:

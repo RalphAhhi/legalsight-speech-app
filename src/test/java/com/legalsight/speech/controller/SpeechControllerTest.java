@@ -63,7 +63,7 @@ class SpeechControllerTest {
         //when:
         ResponseEntity<SpeechDto> response = controller.update(speechId, dto);
         //then:
-        verify(speechService, times(1)).findById(speechId);
+        verify(speechService, times(1)).update(speechId,dto);
 
         assertThat(Objects.requireNonNull(response.getBody()).getId()).isEqualTo(dto.getId());
     }
