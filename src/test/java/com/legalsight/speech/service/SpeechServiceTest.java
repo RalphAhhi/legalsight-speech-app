@@ -1,22 +1,29 @@
 package com.legalsight.speech.service;
 
+import com.legalsight.speech.dto.ResultSetResponse;
 import com.legalsight.speech.dto.SpeechDto;
+import com.legalsight.speech.dto.SpeechFilterDto;
 import com.legalsight.speech.entity.SpeechEntity;
 import com.legalsight.speech.exception.NoDataFoundException;
 import com.legalsight.speech.mapper.BaseMapper;
 import com.legalsight.speech.repository.SpeechRepository;
+import com.legalsight.speech.specification.SpeechSpecification;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 
 import java.time.LocalDate;
+import java.util.List;
 import java.util.Optional;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
@@ -82,6 +89,32 @@ class SpeechServiceTest {
         assertThatThrownBy(()->speechService.deleteById(sampleId))
                 .isInstanceOf(NoDataFoundException.class)
                 .hasMessageContaining("Speech with id 1 not found");
+    }
+
+    @Test
+    void givenFilterDto_whenList_shouldCreateSpecificationAndTriggerFindAndReturnResultDetails(){
+        // Given
+        SpeechFilterDto filterDto = new SpeechFilterDto();
+        filterDto.setPage(1);
+        filterDto.setPerPage(10);
+        filterDto.setSortOrder("asc");
+        filterDto.setSortBy("id");
+
+
+        Page<SpeechEntity> mockPagedResult = mock(Page.class);
+        when(mockPagedResult.getContent()).thenReturn(List.of(new SpeechEntity(),new SpeechEntity()));
+        when(mockPagedResult.getTotalElements()).thenReturn(2L);
+        when(speechRepository.findAll(any(SpeechSpecification.class),any(PageRequest.class)))
+                .thenReturn(mockPagedResult);
+
+        // When
+        ResultSetResponse<SpeechDto> result = speechService.list(filterDto);
+
+        // Then
+        assertThat(result.page()).isEqualTo(1);
+        assertThat(result.perPage()).isEqualTo(10);
+        assertThat(result.totalElements()).isEqualTo(2);
+        verify(speechMapper,times(1)).toDto(any(List.class));
     }
 
     @Test
