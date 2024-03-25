@@ -7,12 +7,12 @@ The Speech API provides endpoints for managing speech records. Speech records ca
 * JDK 17
 
 Steps for local database setup:
- * Should first execute the database setup
  * Navigate to project > setup > database on terminal
  * Execute "sh start-database.sh"
  * This will start your Postrgre database in docker
 
 Steps for running application locally:
+* Should first execute the database setup
  * Navigate to project root directory
  * Execute "mvn spring-boot:run"
  * This will start the application and you can access the API endpoints.
